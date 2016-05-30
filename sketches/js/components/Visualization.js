@@ -11,7 +11,7 @@ class Visualization {
 
 const sketch = (p) => {
 
-  const density = 3;
+  const density = 1;
 
   p.setup = function() {
     let colorTheme = getRandomArrayIndex(ColorPalette);
@@ -23,7 +23,7 @@ const sketch = (p) => {
 
     p.noLoop();
 
-    p.strokeWeight(20);
+    p.strokeWeight(10);
     p.noiseSeed(p.random(100));
 
     for(var i = 0; i < p.windowWidth; i += density) {
@@ -32,13 +32,11 @@ const sketch = (p) => {
       p.stroke(ColorPalette[colorTheme][strokeColorIndex]);
 
       var p1 = {x: i, y: 0},
-      p2 = {x: p.noise(xoff) * p.windowWidth, y: p.windowHeight},
-      p3 = {x: p.windowWidth / 2, y: p.windowHeight / 2},
-      p4 = {x: i + density, y: p.windowHeight};
+      p2 = {x: p.noise(xoff) * p.windowWidth, y: p.windowHeight};
 
       p.line(p1.x, p1.y, p2.x, p2.y);
 
-      xoff += 0.01;
+      xoff += 0.001;
     }
   }
 
