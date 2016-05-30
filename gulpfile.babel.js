@@ -5,7 +5,7 @@ import babelify from 'babelify';
 import watchify from 'watchify';
 import source from 'vinyl-source-stream';
 
-var workingDir = './sketches';
+var workingDir = '.';
 
 function compile(watch) {
   var bundler = watchify(browserify(workingDir + '/js/sketch.js', { debug: true }).transform(babelify, {presets: ["es2015"]}));
@@ -48,7 +48,7 @@ gulp.task('reload', () => {
 });
 
 gulp.task('default', ['browserSync','watch'], () => {
-  gulp.watch([workingDir + '/**/*.js'], ['reload']); 
-     gulp.watch([workingDir + '/*.html'], ['reload']); 
+  gulp.watch([workingDir + '/js/**/*.js'], ['reload']); 
+     gulp.watch([workingDir + '/index.html'], ['reload']); 
      gulp.watch([workingDir + '/css/*.css'], ['reload']);
 });
